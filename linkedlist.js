@@ -53,7 +53,22 @@ class Node {
     }
 
     at(index){
-        
+        let currentIndex = 0
+        while(currentIndex<index){
+            currentNode = currentNode.nextNode
+            currentIndex ++
+        }
+        return currentNode
+    }
+
+    pop(){
+        if(this.headNode == null) return null
+        else{
+            currentNode = this.headNode
+            while(currentNode.nextNode != null){
+                currentNode = currentNode.nextNode
+            }
+        }
     }
   }
   
