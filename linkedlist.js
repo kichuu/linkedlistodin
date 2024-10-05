@@ -21,7 +21,7 @@ class Node {
             while(currentNode.nextNode !== null){
                 currentNode = currentNode.nextNode
             }
-            currentNode.newNode = newNode
+            currentNode.nextNode = newNode
         }
         this.length++
     }
@@ -64,11 +64,54 @@ class Node {
     pop(){
         if(this.headNode == null) return null
         else{
-            currentNode = this.headNode
+            let currentNode = this.headNode
+            let previousNode = null
+
             while(currentNode.nextNode != null){
+                previousNode = currentNode
                 currentNode = currentNode.nextNode
             }
+            previousNode.nextNode = null
+            this.length--
+            return currentNode
         }
+    }
+
+    contains(value){
+        let currentNode = this.headNode
+        while(currentNode != null){
+            if(currentNode.value == value){
+                return true
+            }
+            currentNode = currentNode.nextNode
+        }
+        return false
+    }
+
+    find(value){
+        let currentNode = this.headNode
+        let currentIndex = 0
+        while(currentNode != null){
+            if(currentNode.value == value){
+                return currentIndex
+            }
+            currentNode = currentNode.nextNode
+            currentIndex++
+        }
+        return null
+    }
+
+    toString(){
+        let result = ""
+        let currentNode = this.headNode
+        while(currentNode != null){
+            result += `(${currentNode.value})->`
+            currentNode = currentNode.nextNode
+        }
+        result+= null
+        return result
     }
   }
   
+
+  export default LinkedList
